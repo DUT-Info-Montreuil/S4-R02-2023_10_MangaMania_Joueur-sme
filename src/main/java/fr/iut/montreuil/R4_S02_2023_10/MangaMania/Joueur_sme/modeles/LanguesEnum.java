@@ -1,6 +1,6 @@
 package fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.modeles;
 
-public enum Langue {
+public enum LanguesEnum {
         FRANCAIS(1),
         ENGLISH(2),
         DEUTSCH(3),
@@ -9,7 +9,7 @@ public enum Langue {
 
         private final int choix;
 
-        Langue(int choix) {
+        LanguesEnum(int choix) {
                 this.choix = choix;
         }
 

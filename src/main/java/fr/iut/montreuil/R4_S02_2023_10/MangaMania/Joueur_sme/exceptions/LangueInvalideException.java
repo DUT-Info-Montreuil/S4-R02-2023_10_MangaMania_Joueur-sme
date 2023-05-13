@@ -1,4 +1,4 @@
-package fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.modeles;
+package fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.exceptions;
 
 public class LangueInvalideException extends Exception{
 
