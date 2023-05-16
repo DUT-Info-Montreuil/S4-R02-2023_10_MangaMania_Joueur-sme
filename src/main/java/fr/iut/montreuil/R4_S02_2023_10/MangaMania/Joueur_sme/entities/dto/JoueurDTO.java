@@ -1,11 +1,12 @@
 package fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.entities.dto;
 
 import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.exceptions.*;
+import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utiles.exceptions.enums.LanguesEnum;
 import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.modeles.*;
 
 import java.util.ArrayList;
 
-public class JoueurDTO implements InterfaceServiceJoueur {
+public class JoueurDTO {
     private ArrayList<JoueurDTO> listeJoueurs;
     private String nom;
     private String pseudo;
@@ -35,11 +36,6 @@ public class JoueurDTO implements InterfaceServiceJoueur {
             throw e;
         }
         this.centreDInteretListe = centreDInteretListe;
-    }
-
-    public JoueurDTO()throws NomInvalideException, AnneeDeNaissanceException, PseudonymeInvalideException, LangueInvalideException {
-        listeJoueurs = new ArrayList<>();
-
     }
 
     public String getNom() {
@@ -106,34 +102,6 @@ public class JoueurDTO implements InterfaceServiceJoueur {
     public void setCentreDInteretListe(String centreDInteretListe) {
         this.centreDInteretListe = centreDInteretListe;
     }
-
-    @Override
-    public JoueurDTO ajouterJoueur(String nom, String pseudo, int anneeNaiss, LanguesEnum langue, String listeInteret)
-            throws JoueurDejaExistantException {
-        for (JoueurDTO joueur : listeJoueurs) {
-            if (joueur.getPseudo().equals(pseudo)) {
-                throw new JoueurDejaExistantException("Un joueur avec le même pseudonyme existe déjà.");
-            }
-        }
-
-        try {
-            JoueurDTO nouveauJoueur = new JoueurDTO(nom, pseudo, anneeNaiss, langue, listeInteret);
-            listeJoueurs.add(nouveauJoueur);
-            return nouveauJoueur;
-        } catch (NomInvalideException | AnneeDeNaissanceException | PseudonymeInvalideException | LangueInvalideException e) {
-            // Gérer les exceptions liées aux données du joueur
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-
-    @Override
-    public ArrayList<JoueurDTO> listerJoueurs() {
-        return listeJoueurs;
-    }
-
-
 
     @Override
     public String toString() {

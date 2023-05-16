@@ -2,23 +2,24 @@ package fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme;
 
 import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.entities.dto.JoueurDTO;
 import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.exceptions.*;
-import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.modeles.LanguesEnum;
+import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.impl.ServiceJoueurBean;
+import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utiles.exceptions.enums.LanguesEnum;
 
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) throws AnneeDeNaissanceException, LangueInvalideException, PseudonymeInvalideException, NomInvalideException {
-        JoueurDTO joueurDTO1 = new JoueurDTO();
-        JoueurDTO joueurDTO2 = new JoueurDTO();
-        JoueurDTO joueurDTO3 = new JoueurDTO();
-
-        ArrayList<JoueurDTO> listeJoueurs = joueurDTO1.listerJoueurs();
-
+    public static void main(String[] args) {
+        ArrayList<JoueurDTO> listeJoueurs = new ArrayList<JoueurDTO>();
+        ServiceJoueurBean serviceJoueurBean = new ServiceJoueurBean();
         try {
-            JoueurDTO joueur1 = joueurDTO1.ajouterJoueur("John Doe", "johndoe", 1990, LanguesEnum.FRANCAIS, "Anime");
-            JoueurDTO joueur2 = joueurDTO2.ajouterJoueur("Marie", "johndoe45", 154, LanguesEnum.FRANCAIS, "Mangas, films");
-            JoueurDTO joueur3 = joueurDTO3.ajouterJoueur("Jean", "johndoe445", 1990, LanguesEnum.ENGLISH, "Mangas, musique");
 
+            JoueurDTO joueur1 = serviceJoueurBean.ajouterJoueur("JohnDoe", "johndoe", 1990, LanguesEnum.FRANCAIS, "Anime");
+            JoueurDTO joueur2 = serviceJoueurBean.ajouterJoueur("Marie", "johndoe45", 1998, LanguesEnum.FRANCAIS, "Mangas, films");
+            JoueurDTO joueur3 = serviceJoueurBean.ajouterJoueur("Jean", "johndoe45", 1990, LanguesEnum.ENGLISH, "Mangas, musique");
+
+            listeJoueurs.add(joueur1);
+            listeJoueurs.add(joueur2);
+            listeJoueurs.add(joueur3);
 
             for (JoueurDTO joueur : listeJoueurs) {
                 if (joueur != null) {
