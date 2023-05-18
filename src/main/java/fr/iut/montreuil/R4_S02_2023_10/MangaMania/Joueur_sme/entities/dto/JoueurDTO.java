@@ -14,27 +14,11 @@ public class JoueurDTO {
     private LanguesEnum langue;
     private String centreDInteretListe;
 
-    public JoueurDTO(String nom, String pseudo, int anneeDeNaissance, LanguesEnum langue, String centreDInteretListe) throws NomInvalideException, AnneeDeNaissanceException, PseudonymeInvalideException, LangueInvalideException {
-        try {
-            setNom(nom);
-        } catch (NomInvalideException e) {
-            throw e;
-        }
-        try {
-            setPseudo(pseudo);
-        } catch (PseudonymeInvalideException e) {
-            throw e;
-        }
-        try {
-            setAnneeDeNaissance(anneeDeNaissance);
-        } catch (AnneeDeNaissanceException e) {
-            throw e;
-        }
-        try {
-            setLangue(langue);
-        } catch (LangueInvalideException e) {
-            throw e;
-        }
+    public JoueurDTO(String nom, String pseudo, int anneeDeNaissance, LanguesEnum langue, String centreDInteretListe){
+        this.nom = nom;
+        this.pseudo = pseudo;
+        this.anneeDeNaissance = anneeDeNaissance;
+        this.langue = langue;
         this.centreDInteretListe = centreDInteretListe;
     }
 
@@ -43,15 +27,6 @@ public class JoueurDTO {
     }
 
     public void setNom(String nom) throws NomInvalideException {
-        if (nom == null || nom.isEmpty()) {
-            throw new NomInvalideException("Le nom du joueur ne peut pas être vide.");
-        }
-        if (!Character.isLetter(nom.charAt(0))) {
-            throw new NomInvalideException("Le nom du joueur doit commencer par une lettre.");
-        }
-        if (nom.length() > 32) {
-            throw new NomInvalideException("Le nom du joueur ne peut pas dépasser 32 caractères.");
-        }
         this.nom = nom;
     }
 
@@ -60,15 +35,6 @@ public class JoueurDTO {
     }
 
     public void setPseudo(String pseudo) throws PseudonymeInvalideException {
-        if (pseudo == null || pseudo.isEmpty()) {
-            throw new PseudonymeInvalideException("Le pseudo du joueur ne peut pas être vide.");
-        }
-        if (!Character.isLetter(pseudo.charAt(0))) {
-            throw new PseudonymeInvalideException("Le pseudo du joueur doit commencer par une lettre.");
-        }
-        if (pseudo.length() > 32) {
-            throw new PseudonymeInvalideException("Le pseudo du joueur ne peut pas dépasser 32 caractères.");
-        }
         this.pseudo = pseudo;
     }
 
@@ -77,9 +43,6 @@ public class JoueurDTO {
     }
 
     public void setAnneeDeNaissance(int anneeDeNaissance) throws AnneeDeNaissanceException {
-        if (anneeDeNaissance < 1980 || anneeDeNaissance > 2012) {
-            throw new AnneeDeNaissanceException();
-        }
         this.anneeDeNaissance = anneeDeNaissance;
     }
 
@@ -88,10 +51,6 @@ public class JoueurDTO {
     }
 
     public void setLangue(LanguesEnum langue) throws LangueInvalideException {
-        int choixLangue = langue.getChoix();
-        if (choixLangue < 1 || choixLangue > 5) {
-            throw new IllegalArgumentException();
-        }
         this.langue = langue;
     }
 
