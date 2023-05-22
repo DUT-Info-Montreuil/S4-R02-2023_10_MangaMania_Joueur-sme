@@ -1,9 +1,10 @@
 package fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.impl;
 
 import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.entities.dto.JoueurDTO;
-import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.exceptions.*;
+import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.entities.dto.StatistiqueJoueurDTO;
+import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utils.exceptions.*;
 import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.modeles.InterfaceServiceJoueur;
-import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utiles.exceptions.enums.LanguesEnum;
+import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utils.exceptions.enums.LanguesEnum;
 
 import java.util.ArrayList;
 
@@ -47,6 +48,29 @@ public class ServiceJoueurBean implements InterfaceServiceJoueur {
             JoueurDTO nouveauJoueur = new JoueurDTO(nom, pseudo, anneeNaiss, langue, listeInteret);
             listeJoueurs.add(nouveauJoueur);
             return nouveauJoueur;
+    }
+
+    @Override
+    public ArrayList<StatistiqueJoueurDTO> recupStatsJoueur() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<StatistiqueJoueurDTO> miseAjourStatsJoueur() {
+        return null;
+    }
+
+
+    private JoueurDTO trouverJoueur(String pseudo) throws PseudoIntrouvableException{
+        //JoueurDTO joueu1r = joueurs.stream().filter(x -> x.getPseudo().equals(pseudo)).findFirst().orElse(null);
+        for (JoueurDTO joueur : listeJoueurs) {
+            if (joueur.getPseudo().equals(pseudo)) {
+                return joueur;
+            }else{
+                throw new PseudoIntrouvableException("Pseudo Introuvable");
+            }
+        }
+        return null;
     }
 
     @Override

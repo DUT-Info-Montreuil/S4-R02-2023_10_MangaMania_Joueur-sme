@@ -1,8 +1,10 @@
 package fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.entities.dto;
 
-import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.exceptions.*;
-import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utiles.exceptions.enums.LanguesEnum;
-import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.modeles.*;
+import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utils.exceptions.enums.LanguesEnum;
+import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utils.exceptions.AnneeDeNaissanceException;
+import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utils.exceptions.LangueInvalideException;
+import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utils.exceptions.NomInvalideException;
+import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utils.exceptions.PseudonymeInvalideException;
 
 import java.util.ArrayList;
 
@@ -13,6 +15,7 @@ public class JoueurDTO {
     private int anneeDeNaissance;
     private LanguesEnum langue;
     private String centreDInteretListe;
+    private ArrayList<StatistiqueJoueurDTO> statistiqueJoueurDTO;
 
     public JoueurDTO(String nom, String pseudo, int anneeDeNaissance, LanguesEnum langue, String centreDInteretListe){
         this.nom = nom;
@@ -52,6 +55,14 @@ public class JoueurDTO {
 
     public void setLangue(LanguesEnum langue) throws LangueInvalideException {
         this.langue = langue;
+    }
+
+    public ArrayList<StatistiqueJoueurDTO> getStatistiqueJoueurDTO() {
+        return statistiqueJoueurDTO;
+    }
+
+    public void setStatistiqueJoueurDTO(ArrayList<StatistiqueJoueurDTO> statistiqueJoueurDTO) {
+        this.statistiqueJoueurDTO = statistiqueJoueurDTO;
     }
 
     public String getCentreDInteretListe() {
