@@ -28,14 +28,15 @@ public class AjouterJoueurPseudoIncorrectMock implements InterfaceServiceJoueur 
     }
 
     @Override
-    public ArrayList<StatistiqueJoueurDTO> recupStatsJoueur() throws PseudoIntrouvableException {
+    public ArrayList<StatistiqueJoueurDTO> recupStatsJoueur(String pseudo) throws PseudoIntrouvableException, JoueurAucunStatsException {
         return null;
     }
 
     @Override
-    public ArrayList<StatistiqueJoueurDTO> miseAjourStatsJoueur() throws DonneeInvalideException {
+    public StatistiqueJoueurDTO miseAjourStatsJoueur(String pseudo, int score, int duree, int nbQuestions) throws DonneeInvalideException, PseudoIntrouvableException {
         return null;
     }
+
 
     @Override
     public ArrayList<JoueurDTO> listerJoueurs() {

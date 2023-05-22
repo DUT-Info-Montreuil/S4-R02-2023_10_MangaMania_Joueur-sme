@@ -4,6 +4,7 @@ import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.entities.dto.Joueur
 import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.entities.dto.StatistiqueJoueurDTO;
 import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.modeles.InterfaceServiceJoueur;
 import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utils.exceptions.DonneeInvalideException;
+import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utils.exceptions.JoueurAucunStatsException;
 import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utils.exceptions.PseudoIntrouvableException;
 import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utils.exceptions.enums.LanguesEnum;
 import fr.iut.montreuil.R4_S02_2023_10.MangaMania.Joueur_sme.utils.exceptions.JoueurDejaExistantException;
@@ -24,14 +25,15 @@ public class AjouterJoueurPrenomCorrecteMock implements InterfaceServiceJoueur {
     }
 
     @Override
-    public ArrayList<StatistiqueJoueurDTO> recupStatsJoueur() throws PseudoIntrouvableException {
+    public ArrayList<StatistiqueJoueurDTO> recupStatsJoueur(String pseudo) throws PseudoIntrouvableException, JoueurAucunStatsException {
         return null;
     }
 
     @Override
-    public ArrayList<StatistiqueJoueurDTO> miseAjourStatsJoueur() throws DonneeInvalideException {
+    public StatistiqueJoueurDTO miseAjourStatsJoueur(String pseudo, int score, int duree, int nbQuestions) throws DonneeInvalideException, PseudoIntrouvableException {
         return null;
     }
+
 
     @Override
     public ArrayList<JoueurDTO> listerJoueurs() {

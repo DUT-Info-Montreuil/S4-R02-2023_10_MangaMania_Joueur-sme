@@ -51,27 +51,15 @@ public class ServiceJoueurBean implements InterfaceServiceJoueur {
     }
 
     @Override
-    public ArrayList<StatistiqueJoueurDTO> recupStatsJoueur() {
+    public ArrayList<StatistiqueJoueurDTO> recupStatsJoueur(String pseudo) throws PseudoIntrouvableException, JoueurAucunStatsException {
         return null;
     }
 
     @Override
-    public ArrayList<StatistiqueJoueurDTO> miseAjourStatsJoueur() {
+    public StatistiqueJoueurDTO miseAjourStatsJoueur(String pseudo, int score, int duree, int nbQuestions) throws DonneeInvalideException, PseudoIntrouvableException {
         return null;
     }
 
-
-    private JoueurDTO trouverJoueur(String pseudo) throws PseudoIntrouvableException{
-        //JoueurDTO joueu1r = joueurs.stream().filter(x -> x.getPseudo().equals(pseudo)).findFirst().orElse(null);
-        for (JoueurDTO joueur : listeJoueurs) {
-            if (joueur.getPseudo().equals(pseudo)) {
-                return joueur;
-            }else{
-                throw new PseudoIntrouvableException("Pseudo Introuvable");
-            }
-        }
-        return null;
-    }
 
     @Override
     public ArrayList<JoueurDTO> listerJoueurs() {
