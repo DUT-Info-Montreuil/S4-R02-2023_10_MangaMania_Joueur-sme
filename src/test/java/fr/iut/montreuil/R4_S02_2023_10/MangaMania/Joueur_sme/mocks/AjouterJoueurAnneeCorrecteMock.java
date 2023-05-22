@@ -13,13 +13,7 @@ public class AjouterJoueurAnneeCorrecteMock implements InterfaceServiceJoueur {
     public JoueurDTO ajouterJoueur(String nom, String pseudo, int anneeNaiss, LanguesEnum langue, String listeInteret) throws JoueurDejaExistantException {
         try {
             return new JoueurDTO("john doe", "johndoe", 2003, LanguesEnum.FRANCAIS, "Anime");
-        } catch (NomInvalideException e) {
-            e.printStackTrace();
-        } catch (AnneeDeNaissanceException e) {
-            e.printStackTrace();
-        } catch (PseudonymeInvalideException e) {
-            e.printStackTrace();
-        } catch (LangueInvalideException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

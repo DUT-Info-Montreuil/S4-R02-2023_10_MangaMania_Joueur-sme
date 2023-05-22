@@ -20,13 +20,7 @@ public class AjouterJoueurPseudoIncorrectMock implements InterfaceServiceJoueur 
 
         try {
             return new JoueurDTO("John Doe", "johndoe", 2004, LanguesEnum.FRANCAIS, "Anime");
-        } catch (NomInvalideException e) {
-            e.printStackTrace();
-        } catch (AnneeDeNaissanceException e) {
-            e.printStackTrace();
-        } catch (PseudonymeInvalideException e) {
-            e.printStackTrace();
-        } catch (LangueInvalideException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
