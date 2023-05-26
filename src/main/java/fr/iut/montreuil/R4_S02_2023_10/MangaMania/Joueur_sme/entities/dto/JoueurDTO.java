@@ -23,6 +23,7 @@ public class JoueurDTO {
         this.anneeDeNaissance = anneeDeNaissance;
         this.langue = langue;
         this.centreDInteretListe = centreDInteretListe;
+        this.statistiqueJoueurDTO = new ArrayList<>();
     }
 
     public String getNom() {

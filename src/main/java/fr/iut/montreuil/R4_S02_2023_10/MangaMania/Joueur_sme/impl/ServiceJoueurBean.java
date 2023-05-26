@@ -52,12 +52,46 @@ public class ServiceJoueurBean implements InterfaceServiceJoueur {
 
     @Override
     public ArrayList<StatistiqueJoueurDTO> recupStatsJoueur(String pseudo) throws PseudoIntrouvableException, JoueurAucunStatsException {
-        return null;
+        JoueurDTO joueur = null;
+
+        for (JoueurDTO joueurRecherche : listeJoueurs) {
+            if (joueur.getPseudo().equals(pseudo)) {
+                joueur =  joueurRecherche;
+            }else{
+                throw new PseudoIntrouvableException("le pseudo n'est pas present dans la liste des joueurs");
+            }
+        }
+        if (joueur.getStatistiqueJoueurDTO().size() == 0) {
+            throw new JoueurAucunStatsException("Le joueur n'a pas de stats et donc n'a pas encore joué");
+        }
+
+        return joueur.getStatistiqueJoueurDTO();
     }
 
     @Override
     public StatistiqueJoueurDTO miseAjourStatsJoueur(String pseudo, int score, int duree, int nbQuestions) throws DonneeInvalideException, PseudoIntrouvableException {
-        return null;
+        JoueurDTO joueur = null;
+
+        for (JoueurDTO joueurRecherche : listeJoueurs) {
+            if (joueur.getPseudo().equals(pseudo)) {
+                joueur =  joueurRecherche;
+            }else{
+                throw new PseudoIntrouvableException("le pseudo n'est pas present dans la liste des joueurs");
+            }
+        }
+
+        if (score < 0)
+            throw new DonneeInvalideException("inférieur à 0");
+        if (duree < 0)
+            throw new DonneeInvalideException("inférieur à 0");
+        if (nbQuestions < 0)
+            throw new DonneeInvalideException("inférieur à 0");
+        if (score > nbQuestions)
+            throw new DonneeInvalideException("score supérieur au nb de question (or, 1 point par bonne reponse)");
+
+        joueur.getStatistiqueJoueurDTO().add(new StatistiqueJoueurDTO(score, duree, nbQuestions));
+
+        return new StatistiqueJoueurDTO(score, duree, nbQuestions);
     }
 
 
